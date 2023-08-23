@@ -1,21 +1,23 @@
-const React = require('react');
+import React from 'react';
 
 class Index extends React.Component {
   render() {
-    const { pokemon } = this.props;
+    const { pokemonList } = this.props;
+
+    if (!pokemonList) {
+      return <div>Loading...</div>;
+    }
+
     return (
       <div>
-        <h1>See All The Pokemon!</h1>
+        <h1>Pokémon Index Page</h1>
         <ul>
-          {pokemon.map((poke, index) => (
-            <li key={index}>
-              <a href={`/pokemon/${index}`}>{poke.name}</a>
-            </li>
+          {pokemonList.map((pokemon, index) => (
+            <li key={index}>{pokemon.name}</li>
           ))}
         </ul>
       </div>
     );
   }
 }
-
-module.exports = Index;
+export default Index; 
